@@ -90,4 +90,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # config.active_record.encryption.key_derivation_salt = ENV["BASE_SECRET_KEY"]
 end

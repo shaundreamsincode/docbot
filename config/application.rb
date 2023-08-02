@@ -19,6 +19,8 @@ module Docbot
       api_token: ENV['POSTMARK_API_TOKEN']
     }
 
+    config.active_record.encryption.key_derivation_salt = ENV["ENCRYPTION_KEY_DERIVATION_SALT"]
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
