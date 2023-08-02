@@ -20,6 +20,9 @@ module Api
 
       def create
         chat = CreateChat.call(language: chat_params[:language]).chat
+
+        puts "hi"
+        puts chat.messages.first.id
         render json: chat.to_json(include: [:messages])
       end
 

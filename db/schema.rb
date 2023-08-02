@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_031049) do
     t.string "token"
     t.bigint "chat_id"
     t.integer "role", default: 0, null: false
-    t.text "content", null: false
+    t.text "encrypted_content"
     t.boolean "is_prompt", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

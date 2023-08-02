@@ -55,6 +55,7 @@ gem 'dotenv-rails'
 # for encryption
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
+gem 'attr_encrypted'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
