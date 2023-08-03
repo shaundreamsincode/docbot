@@ -26,5 +26,7 @@ module Docbot
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.attr_encrypted_key = ENV['ENCRYPTION_PRIMARY_KEY']
   end
 end

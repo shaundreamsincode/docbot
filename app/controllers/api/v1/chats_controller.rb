@@ -13,17 +13,19 @@ module Api
           render json: { error: 'chatClosed' }, status: :unprocessable_entity
         else
           Event.create!(name: :chat_viewed)
+          chat_json = chat.to_json(include: [:messages], encryption_key: ENV["ENCRYPTION_PRIMARY_KEY"])
+
           # todo - possibly filter out system messages here...?
-          render json: chat.to_json(include: [:messages])
+          render json: chat_json
         end
       end
 
       def create
         chat = CreateChat.call(language: chat_params[:language]).chat
 
-        puts "hi"
-        puts chat.messages.first.id
-        render json: chat.to_json(include: [:messages])
+        puts "hi #{ENV["ENCRYPTION_PRIMARY_KEY"]}"
+        chat_json = chat.to_json(include: [:messages])
+        render json: chat_json
       end
 
       def close
@@ -33,7 +35,9 @@ module Api
         #   render json: { error: "Chat already closed" }, status: :unprocessable_entity
         # else
           chat.update!(closed_at: Time.zone.now)
-          render json: chat.to_json(include: [:messages])
+        chat_json = chat.to_json(include: [:messages], encryption_key: ENV["ENCRYPTION_PRIMARY_KEY"])
+
+        render json: chat_json
         # end
       end
 
